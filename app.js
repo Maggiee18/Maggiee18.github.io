@@ -133,7 +133,7 @@
     btn.setAttribute('aria-pressed', 'false');
     const count = PROJECTS.filter((p) => p.skills.includes(s.id)).length;
     btn.innerHTML = `<span class="skill-name">${s.name}</span><span class="skill-count">${count}</span>`;
-    btn.addEventListener('click', () => select(active === s.id ? null : s.id));
+    btn.addEventListener('click', () => select(active === s.id ? null : s.id, 'map'));
     btn.addEventListener('mouseenter', () => preview(s.id));
     btn.addEventListener('mouseleave', () => preview(null));
     li.appendChild(btn);
@@ -218,7 +218,7 @@
     });
   }
 
-  function select(skillId) {
+  function select(skillId, from) {
     active = skillId;
     skillList.querySelectorAll('.skill').forEach((b) => {
       b.setAttribute('aria-pressed', String(b.dataset.skill === skillId));
@@ -230,6 +230,40 @@
     hint.textContent = skillId
       ? `${n} projects use ${s.name.toLowerCase()}. Pick it again to see everything.`
       : "Pick a skill to see where I've used it.";
+    document.dispatchEvent(new CustomEvent('portfolio:select', { detail: { id: skillId, from: from || 'map' } }));
+  }
+
+  /* ---------- shared with the 3D hero (assets/hero.js) ---------- */
+
+  function showProject(i) {
+    const el = document.getElementById('p' + i);
+    if (!el) return;
+    el.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+    el.classList.remove('flash');
+    void el.offsetWidth;
+    el.classList.add('flash');
+    const link = el.querySelector('a');
+    if (link) link.focus({ preventScroll: true });
+  }
+
+  window.Portfolio = {
+    SKILLS, PROJECTS,
+    select: (id, from) => select(id, from),
+    preview: (id) => preview(id),
+    showProject,
+  };
+
+  /* ---------- calm scroll reveals ---------- */
+
+  const revealables = document.querySelectorAll('.project, .more > div, .end');
+  if ('IntersectionObserver' in window && !reduceMotion) {
+    document.documentElement.classList.add('reveal-on');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
+    revealables.forEach((el, i) => { el.style.setProperty('--d', `${(i % 3) * 70}ms`); io.observe(el); });
   }
 
   function preview(skillId) {

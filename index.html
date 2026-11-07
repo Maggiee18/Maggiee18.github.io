@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sai Meghana Annepu</title>
-  <meta name="description" content="Sai Meghana Annepu, CSE (AI/ML) student at SRM University AP. I build AI agents, ML pipelines and reliable backends." />
+  <meta name="description" content="Sai Meghana Annepu, final year CSE (AI/ML) student at SRM University AP. I build AI agents, explainable ML models and reliable backends that people can trust." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
@@ -13,18 +13,35 @@
 <body>
   <a class="skip" href="#work">Skip to projects</a>
 
-  <header class="intro">
-    <h1>Sai Meghana<br />Annepu</h1>
-    <p class="lede">
-      I build AI agents that show their reasoning, ML models that explain their predictions,
-      and backends that keep working when things go wrong. Final year CSE (AI/ML) at SRM University AP, graduating 2027.
-    </p>
-    <nav class="links" aria-label="Contact and profiles">
-      <a href="https://github.com/Maggiee18">GitHub</a>
-      <a href="https://www.linkedin.com/in/sai-meghana-annepu">LinkedIn</a>
-      <a href="mailto:annepu.saimeghana@gmail.com">Email</a>
-      <a href="assets/Sai_Meghana_Annepu_Resume.pdf" download>Download resume</a>
-    </nav>
+  <header class="hero">
+    <div class="hero-bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>Open to internships and full time roles from 2027</p>
+      <h1><span class="h1-line">Sai Meghana</span><span class="h1-line">Annepu<span class="dot" aria-hidden="true">.</span></span></h1>
+      <p class="lede">
+        Final year CSE student at SRM University AP, specialising in AI and ML, with a serious love for making machines do cool things.
+        I'm passionate about full stack development and turning creative ideas into AI applications that solve real problems,
+        from sleek interfaces to solid backends. Always curious, always experimenting, and probably already planning the next
+        project before this one's done. My code works on the first try about as often as my alarm does, but I never stop until it runs!
+      </p>
+      <nav class="links" aria-label="Contact and profiles">
+        <a class="btn btn-main" href="assets/Sai_Meghana_Annepu_Resume.pdf" download>Download resume</a>
+        <a class="btn" href="#work">See my work</a>
+        <span class="socials">
+          <a href="https://github.com/Maggiee18">GitHub</a>
+          <a href="https://www.linkedin.com/in/sai-meghana-annepu">LinkedIn</a>
+          <a href="mailto:annepu.saimeghana@gmail.com">Email</a>
+        </span>
+      </nav>
+    </div>
+
+    <div class="stage" aria-label="An illustrated 3D version of me, with my skills floating around. The same skills are listed under What I've built.">
+      <div class="stage-glow" aria-hidden="true"></div>
+      <canvas id="hero3d" aria-hidden="true"></canvas>
+      <img class="me-still" src="assets/me.webp" width="404" height="1477" alt="" loading="lazy" />
+      <div class="orbit-labels" id="orbit-labels" aria-hidden="true"></div>
+      <div class="guide" id="guide"></div>
+    </div>
   </header>
 
   <main>
@@ -71,5 +88,8 @@
   </footer>
 
   <script src="app.js"></script>
+  <script src="assets/guide.js" defer></script>
+  <script src="assets/effects.js" defer></script>
+  <script type="module" src="assets/hero.js"></script>
 </body>
 </html>
