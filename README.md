@@ -1,37 +1,25 @@
 # Sai Meghana Annepu: portfolio
 
-My personal site. A 3D version of me stands on a little stage with my skills floating around her as glossy shapes. Tap a shape and she talks you through every project that uses that skill, in text and (where the browser has a voice) out loud. Further down, pick a skill on the left and the page draws a line to every project where I've used it.
+My personal site, in a dark cinematic style: a spotlight switches on, and an illustrated me stands in it. Tap a skill and she walks you through every project where I used it, in a speech bubble and (where the browser has a voice) out loud.
 
-Plain HTML, CSS and JavaScript, hosted on GitHub Pages. The only build step is the 3D hero, and the built file is already committed.
+Plain HTML, CSS and JavaScript with no build step. Hosted on GitHub Pages.
 
 ## Run locally
 
-Serve the folder (for example `python -m http.server`) and open `http://localhost:8000`. The 3D hero is an ES module, so opening `index.html` straight from disk won't load it.
+Open `index.html` in a browser, or serve the folder with `python -m http.server` and open `http://localhost:8000`.
 
 ## Update
 
-* Projects and skills live at the top of `app.js` (the `SKILLS` and `PROJECTS` arrays). The 3D shapes and the tap panel pick them up automatically.
-* What she says in the speech bubble lives at the top of `assets/guide.js` (the `LINES` array).
-* My character picture is `assets/me.webp` (a cut out, transparent background). If you replace it, update `ME.aspect` at the top of `src/hero.js` and rebuild.
+* Skills and projects live in `data.js` (the `SKILLS` and `PROJECTS` arrays). The skill chips, the spoken tour and the work list all read from there.
+* What she says in the speech bubble is the `LINES` array near the top of the speech bubble part of `main.js`.
+* My character picture is `assets/me.webp` (a cut out with a transparent background).
 * Replace `assets/Sai_Meghana_Annepu_Resume.pdf` to update the resume download.
-
-## Rebuild the 3D hero
-
-Only needed after editing `src/hero.js`:
-
-```
-cd src
-npm install
-npm run build
-```
-
-This writes `assets/hero.js` (Three.js bundled with esbuild).
 
 ## Files
 
-* `index.html`, `styles.css`, `app.js`: the page, styles, projects and skill map
-* `assets/hero.js`: the built 3D stage (source in `src/hero.js`)
-* `assets/guide.js`: the speech bubble, read aloud and the skill tour panel
-* `assets/effects.js`: finishing touches (name reveal, scroll progress, cursor glow, card spotlights)
+* `index.html`: the page
+* `styles.css`: all styles, including the intro sequence and animations
+* `data.js`: skills and projects
+* `main.js`: the speech bubble and skill tour, the work list and filters, and the effects (spotlight dust, parallax, reveals, cursor, nav)
 
-Everything respects reduced motion, and the page still works without WebGL.
+Everything respects reduced motion.

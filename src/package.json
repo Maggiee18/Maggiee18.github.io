@@ -1,9 +1,0 @@
-{
-  "name": "portfolio-3d",
-  "private": true,
-  "description": "Builds the 3D hero (me on a stage with my skills orbiting) into ../assets/hero.js",
-  "scripts": {
-    "build": "esbuild hero.js --bundle --format=esm --minify --target=es2020 --legal-comments=eof --outfile=../assets/hero.js"
-  },
-  "devDependencies": { "esbuild": "0.25.11", "three": "0.186.1" }
-}

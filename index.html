@@ -1,95 +1,159 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sai Meghana Annepu</title>
-  <meta name="description" content="Sai Meghana Annepu, final year CSE (AI/ML) student at SRM University AP. I build AI agents, explainable ML models and reliable backends that people can trust." />
+  <meta name="description" content="Sai Meghana Annepu, final year CSE (AI/ML) student at SRM University AP. Full stack development and AI applications that solve real problems." />
+  <meta name="theme-color" content="#06070b" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="assets/me.webp" />
   <link rel="stylesheet" href="styles.css" />
+  <script>document.documentElement.classList.replace('no-js', 'js');</script>
 </head>
 <body>
   <a class="skip" href="#work">Skip to projects</a>
+  <div class="progress" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"></div>
 
-  <header class="hero">
-    <div class="hero-bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
-    <div class="hero-copy">
-      <p class="eyebrow"><span class="pulse" aria-hidden="true"></span>Open to internships and full time roles from 2027</p>
-      <h1><span class="h1-line">Sai Meghana</span><span class="h1-line">Annepu<span class="dot" aria-hidden="true">.</span></span></h1>
-      <p class="lede">
-        Final year CSE student at SRM University AP, specialising in AI and ML, with a serious love for making machines do cool things.
-        I'm passionate about full stack development and turning creative ideas into AI applications that solve real problems,
-        from sleek interfaces to solid backends. Always curious, always experimenting, and probably already planning the next
-        project before this one's done. My code works on the first try about as often as my alarm does, but I never stop until it runs!
-      </p>
-      <nav class="links" aria-label="Contact and profiles">
-        <a class="btn btn-main" href="assets/Sai_Meghana_Annepu_Resume.pdf" download>Download resume</a>
-        <a class="btn" href="#work">See my work</a>
-        <span class="socials">
-          <a href="https://github.com/Maggiee18">GitHub</a>
-          <a href="https://www.linkedin.com/in/sai-meghana-annepu">LinkedIn</a>
-          <a href="mailto:annepu.saimeghana@gmail.com">Email</a>
-        </span>
-      </nav>
-    </div>
-
-    <div class="stage" aria-label="An illustrated 3D version of me, with my skills floating around. The same skills are listed under What I've built.">
-      <div class="stage-glow" aria-hidden="true"></div>
-      <canvas id="hero3d" aria-hidden="true"></canvas>
-      <img class="me-still" src="assets/me.webp" width="404" height="1477" alt="" loading="lazy" />
-      <div class="orbit-labels" id="orbit-labels" aria-hidden="true"></div>
-      <div class="guide" id="guide"></div>
-    </div>
+  <header class="nav" id="nav">
+    <a class="logo" href="#top" aria-label="Back to top">SMA<span>.</span></a>
+    <nav aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-cta magnetic" href="assets/Sai_Meghana_Annepu_Resume.pdf" download>Resume</a>
+    </nav>
   </header>
 
   <main>
-    <section id="work" class="work" aria-labelledby="work-title">
-      <div class="work-head">
-        <h2 id="work-title">What I've built</h2>
-        <p class="hint" id="hint">Pick a skill to see where I've used it.</p>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top" aria-labelledby="name">
+      <div class="beam" aria-hidden="true"></div>
+      <canvas class="dust" aria-hidden="true"></canvas>
+      <p class="giant" aria-hidden="true"><span>SAI MEGHANA</span><span>ANNEPU</span></p>
+
+      <div class="stage">
+        <div class="floor" aria-hidden="true"></div>
+        <img class="me-reflect" src="assets/me.webp" alt="" aria-hidden="true" />
+        <img class="me" src="assets/me.webp" width="404" height="1477" alt="An illustrated 3D style version of me in a black top and beige cargo trousers" />
+        <div class="guide" id="guide" role="status" aria-live="polite">
+          <p class="bubble-text"></p>
+          <div class="bubble-ctrl">
+            <button type="button" class="b-play" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5v14l11-7z"/></svg><span>Read aloud</span></button>
+            <button type="button" class="b-next">Next</button>
+            <button type="button" class="b-skip" aria-label="Hide the speech bubble">Skip</button>
+          </div>
+        </div>
       </div>
 
-      <div class="map" id="map">
-        <ul class="skills" id="skills" aria-label="Filter projects by skill"></ul>
-        <svg class="wires" id="wires" aria-hidden="true"></svg>
-        <ol class="projects" id="projects" aria-live="polite"></ol>
+      <div class="intro">
+        <p class="eyebrow">Final year CSE · AI and ML</p>
+        <h1 id="name" class="sr-only">Sai Meghana Annepu</h1>
+        <p class="lede">
+          Final year CSE student at SRM University AP, specialising in AI and ML, with a serious love for making machines do cool things.
+          I'm passionate about full stack development and turning creative ideas into AI applications that solve real problems,
+          from sleek interfaces to solid backends. Always curious, always experimenting, and probably already planning the next
+          project before this one's done. My code works on the first try about as often as my alarm does, but I never stop until it runs!
+        </p>
+        <div class="cta">
+          <a class="btn btn-main magnetic" href="assets/Sai_Meghana_Annepu_Resume.pdf" download>Download resume</a>
+          <a class="btn magnetic" href="#work">See my work</a>
+        </div>
       </div>
+
+      <div class="skills" role="region" aria-labelledby="skills-title">
+        <section class="tour" id="tour" hidden aria-labelledby="tour-title">
+          <header>
+            <span class="tour-dot" aria-hidden="true"></span>
+            <div><h2 id="tour-title"></h2><p class="tour-count"></p></div>
+            <button type="button" class="tour-close" aria-label="Close">&times;</button>
+          </header>
+          <ol class="tour-list"></ol>
+          <footer>
+            <button type="button" class="tour-voice"></button>
+            <a class="tour-more" href="#work">See full details</a>
+          </footer>
+        </section>
+        <h2 id="skills-title" class="skills-title">Tap a skill</h2>
+        <div class="chips" id="hero-chips"></div>
+      </div>
+
+      <a class="scroll-cue" href="#work" aria-label="Scroll to my work"><span>Scroll</span><i></i></a>
     </section>
 
-    <section class="more" aria-label="Experience and achievements">
-      <div>
-        <h2>Experience</h2>
-        <article class="role">
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true"><div class="marquee-track" id="marquee"></div></div>
+
+    <!-- ============ WORK ============ -->
+    <section class="work" id="work" aria-labelledby="work-title">
+      <div class="section-head">
+        <p class="kicker">01 · Projects</p>
+        <h2 id="work-title" class="big reveal">Selected <em>work</em></h2>
+      </div>
+      <div class="filter" role="group" aria-label="Filter projects by skill" id="filter"></div>
+      <p class="filter-note" id="filter-note" aria-live="polite"></p>
+      <ol class="projects" id="projects"></ol>
+    </section>
+
+    <!-- ============ STATEMENT ============ -->
+    <section class="statement" aria-label="What I care about">
+      <p class="scrub" id="scrub">I build AI that explains itself, backends that keep working when things go wrong, and interfaces people actually enjoy using.</p>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="section-head">
+        <p class="kicker">02 · About</p>
+        <h2 id="about-title" class="big reveal">The <em>story</em> so far</h2>
+      </div>
+      <div class="about-grid">
+        <article class="card reveal">
+          <p class="card-k">Education</p>
+          <h3>B.Tech in CSE, AI and ML</h3>
+          <p>SRM University AP, 2023 to 2027</p>
+        </article>
+        <article class="card reveal">
+          <p class="card-k">Experience</p>
           <h3>Salesforce Intern, SmartBridge</h3>
           <p class="when">May to July 2025</p>
           <p>Built CRM features from functional requirements with custom objects, validation rules and automated workflows, then tested, validated data and debugged issues before release.</p>
         </article>
+        <article class="card card-wide reveal">
+          <p class="card-k">Recognition</p>
+          <ul class="wins">
+            <li>Team finalist, top 45 of 260 teams, SIH 2025 internal hackathon at SRM University AP</li>
+            <li>Pitched a verification layer to catch hallucinated legal answers from ChatGPT, Idea Bootcamp 2.0, E-Cell SRM AP</li>
+            <li>Oracle Certified Professional, Java SE 17 Developer</li>
+            <li>MongoDB Associate Developer</li>
+            <li>Amazon Future Engineer Scholar, Foundation For Excellence, Cohort 3</li>
+            <li>Anchored the freshers' event at SRM University AP in Telugu and English</li>
+          </ul>
+        </article>
       </div>
-      <div>
-        <h2>Recognition</h2>
-        <ul class="plain">
-          <li>Team finalist, top 45 of 260 teams, SIH 2025 internal hackathon at SRM University AP</li>
-          <li>Pitched a verification layer to catch hallucinated legal answers from ChatGPT, Idea Bootcamp 2.0, E-Cell SRM AP</li>
-          <li>Oracle Certified Professional, Java SE 17 Developer</li>
-          <li>MongoDB Associate Developer</li>
-          <li>Amazon Future Engineer Scholar, Foundation For Excellence, Cohort 3</li>
-          <li>Anchored the freshers' event at SRM University AP in Telugu and English</li>
-        </ul>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <p class="kicker">03 · Contact</p>
+      <h2 id="contact-title" class="huge reveal">Let's build something <em>useful.</em></h2>
+      <a class="mail magnetic" href="mailto:annepu.saimeghana@gmail.com">annepu.saimeghana@gmail.com</a>
+      <div class="socials">
+        <a href="https://github.com/Maggiee18">GitHub</a>
+        <a href="https://www.linkedin.com/in/sai-meghana-annepu">LinkedIn</a>
+        <a href="assets/Sai_Meghana_Annepu_Resume.pdf" download>Resume</a>
       </div>
     </section>
   </main>
 
-  <footer class="end">
-    <p>Open to internships and full time roles from 2027.</p>
-    <p><a href="mailto:annepu.saimeghana@gmail.com">annepu.saimeghana@gmail.com</a></p>
+  <footer class="foot">
+    <p>Open to internships and full time roles from 2027</p>
     <p>Visakhapatnam, India</p>
   </footer>
 
-  <script src="app.js"></script>
-  <script src="assets/guide.js" defer></script>
-  <script src="assets/effects.js" defer></script>
-  <script type="module" src="assets/hero.js"></script>
+  <script src="data.js"></script>
+  <script src="main.js" defer></script>
 </body>
 </html>
