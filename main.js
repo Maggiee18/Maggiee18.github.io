@@ -38,6 +38,10 @@
     };
   });
 
+  // The full story is visible in the HTML (so tools that don't run JavaScript can
+  // read it); here it folds away behind "Explore project".
+  list.querySelectorAll('.p-more').forEach((m) => { m.hidden = true; });
+
   // "Explore project" opens the full story in place
   list.addEventListener('click', (e) => {
     const btn = e.target.closest('.p-explore');
