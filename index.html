@@ -23,7 +23,9 @@
     <nav aria-label="Sections">
       <a href="#work">Work</a>
       <a href="#about">About</a>
+      <a href="#journey">Journey</a>
       <a href="#contact">Contact</a>
+      <button type="button" class="term-open" id="term-open" aria-label="Open terminal mode" title="Terminal mode (press ` to open)">&gt;_</button>
       <a class="nav-cta magnetic" href="assets/Sai_Meghana_Annepu_Resume.pdf" download>Resume</a>
     </nav>
   </header>
@@ -95,7 +97,214 @@
       </div>
       <div class="filter" role="group" aria-label="Filter projects by skill" id="filter"></div>
       <p class="filter-note" id="filter-note" aria-live="polite"></p>
-      <ol class="projects" id="projects"></ol>
+      <ol class="projects" id="projects">
+        <li class="project reveal" id="proj-agentic-fraud-investigation-agent" data-skills="agents finance backend">
+          <span class="num" aria-hidden="true">01</span>
+          <div class="p-head">
+            <h3 class="p-name">Agentic Fraud Investigation Agent</h3>
+            <p class="tags"><span>Python</span><span>LangGraph</span><span>MCP</span><span>TigerGraph</span><span>Anthropic</span><span>Gemini</span></p>
+          </div>
+          <div class="p-body">
+            <p class="p-what">An AI agent that investigates card fraud on real IEEE-CIS transaction data. It queries a knowledge graph through 10 tools, decides when it needs more evidence, and recommends an action, while the fraud rules stay deterministic and auditable.</p>
+            <div class="p-actions">
+            <a href="https://github.com/Maggiee18/hhgoa-fraud-agent" target="_blank" rel="noopener">Code<span class="sr-only">: Agentic Fraud Investigation Agent (opens in a new tab)</span></a>
+              <button type="button" class="p-explore" aria-expanded="false" aria-controls="proj-agentic-fraud-investigation-agent-more">Explore project</button>
+            </div>
+            <div class="p-more" id="proj-agentic-fraud-investigation-agent-more" hidden>
+              <h4>How I know it works</h4>
+              <p class="p-proof">Ran all 20 benchmark cases end to end on a live graph, through both a direct and an MCP server backend.</p>
+            </div>
+          </div>
+        </li>
+        <li class="project reveal" id="proj-leadscout" data-skills="agents backend reliability frontend">
+          <span class="num" aria-hidden="true">02</span>
+          <div class="p-head">
+            <h3 class="p-name">LeadScout</h3>
+            <p class="tags"><span>Python</span><span>FastAPI</span><span>Groq</span><span>PostgreSQL</span><span>JavaScript</span><span>Three.js</span><span>Docker</span></p>
+          </div>
+          <div class="p-body">
+            <p class="p-what">An AI lead qualifier for real estate agents. It reads a property inquiry, scores the lead Hot, Warm or Cold with every point explained, and drafts the first reply. The AI only extracts the facts, so scores stay deterministic and auditable.</p>
+            <div class="p-actions">
+            <a href="https://leadscout-3588.onrender.com" target="_blank" rel="noopener">Try it<span class="sr-only">: LeadScout (opens in a new tab)</span></a>
+            <a href="https://github.com/Maggiee18/leadscout" target="_blank" rel="noopener">Code<span class="sr-only">: LeadScout (opens in a new tab)</span></a>
+              <button type="button" class="p-explore" aria-expanded="false" aria-controls="proj-leadscout-more">Explore project</button>
+            </div>
+            <div class="p-more" id="proj-leadscout-more" hidden>
+              <h4>How I know it works</h4>
+              <p class="p-proof">77 tests on SQLite and PostgreSQL with CI on every push, accounts with secure sessions and password reset, a rules fallback when the AI hits its rate limit, and an interactive 3D landing page. Deployed live.</p>
+              <h4>The hardest part</h4>
+              <p class="p-challenge">Groq retired the model I was using halfway through, and the free tier allows only 8,000 tokens a minute. I switched models, capped every request, and added a rules fallback so scoring never stops when the AI hits its limit.</p>
+            </div>
+          </div>
+        </li>
+        <li class="project reveal" id="proj-securebank" data-skills="backend finance reliability frontend">
+          <span class="num" aria-hidden="true">03</span>
+          <div class="p-head">
+            <h3 class="p-name">SecureBank</h3>
+            <p class="tags"><span>Java 17</span><span>Spring Boot</span><span>PostgreSQL</span><span>React</span><span>TypeScript</span><span>Docker</span></p>
+          </div>
+          <div class="p-body">
+            <p class="p-what">A banking API and web app built around the hard parts of moving money: atomic transfers that roll back on failure, optimistic locking for simultaneous withdrawals, and idempotency keys so a retried payment never goes through twice.</p>
+            <div class="p-actions">
+            <a href="https://securebank-web-mi3f.onrender.com" target="_blank" rel="noopener">Try it<span class="sr-only">: SecureBank (opens in a new tab)</span></a>
+            <a href="https://github.com/Maggiee18/SecureBank" target="_blank" rel="noopener">Code<span class="sr-only">: SecureBank (opens in a new tab)</span></a>
+              <button type="button" class="p-explore" aria-expanded="false" aria-controls="proj-securebank-more">Explore project</button>
+            </div>
+            <div class="p-more" id="proj-securebank-more" hidden>
+              <h4>How I know it works</h4>
+              <p class="p-proof">84 tests, including parallel withdrawals and a forced failure halfway through a transfer. CI on every push and deployed live.</p>
+            </div>
+          </div>
+        </li>
+        <li class="project reveal" id="proj-pitchmirror" data-skills="agents speech backend frontend">
+          <span class="num" aria-hidden="true">04</span>
+          <div class="p-head">
+            <h3 class="p-name">PitchMirror</h3>
+            <p class="tags"><span>Python</span><span>FastAPI</span><span>WebSockets</span><span>Gemini</span><span>Whisper</span><span>MediaPipe</span><span>React</span></p>
+          </div>
+          <div class="p-body">
+            <p class="p-what">A live coach for presentations, vivas and interviews. It reads your slides, listens to you speak, tracks eye contact on your own device, flags where your words and slides disagree, and asks follow up questions out loud.</p>
+            <div class="p-actions">
+            <a href="https://pitchmirror-bmug.onrender.com" target="_blank" rel="noopener">Try it<span class="sr-only">: PitchMirror (opens in a new tab)</span></a>
+            <a href="https://github.com/Maggiee18/pitchmirror-ai" target="_blank" rel="noopener">Code<span class="sr-only">: PitchMirror (opens in a new tab)</span></a>
+              <button type="button" class="p-explore" aria-expanded="false" aria-controls="proj-pitchmirror-more">Explore project</button>
+            </div>
+            <div class="p-more" id="proj-pitchmirror-more" hidden>
+              <h4>How I know it works</h4>
+              <p class="p-proof">Several specialized LLM agents with schema checks and rule based fallbacks, so it still works offline. Deployed with a public demo.</p>
+            </div>
+          </div>
+        </li>
+        <li class="project reveal" id="proj-crowdguard" data-skills="ml backend frontend">
+          <span class="num" aria-hidden="true">05</span>
+          <div class="p-head">
+            <h3 class="p-name">CrowdGuard</h3>
+            <p class="tags"><span>Python</span><span>YOLOv8</span><span>OpenVINO</span><span>PyTorch</span><span>scikit-learn</span><span>OpenCV</span><span>FastAPI</span><span>WebSockets</span><span>React</span><span>Tailwind</span></p>
+          </div>
+          <div class="p-body">
+            <p class="p-what">A real time crowd monitoring system that counts people from CCTV, webcam or phone cameras, predicts when a crowd is turning risky, and alerts organisers before it becomes dangerous. I started it on my own after reading about stampedes at events like the Kumbh Mela.</p>
+            <div class="p-actions">
+            <a href="https://github.com/Maggiee18/crowd-risk-analysis" target="_blank" rel="noopener">Code<span class="sr-only">: CrowdGuard (opens in a new tab)</span></a>
+              <button type="button" class="p-explore" aria-expanded="false" aria-controls="proj-crowdguard-more">Explore project</button>
+            </div>
+            <div class="p-more" id="proj-crowdguard-more" hidden>
+              <h4>How I know it works</h4>
+              <p class="p-proof">Trained on the 2000 frame Mall dataset with a time based split: a count corrector cuts the error from 4.34 people per frame (raw YOLO) to 1.71, the risk model reaches 86% accuracy, and a panic detector catches 98% of panic frames in simulation with zero false alarms on real footage. Accounts with roles, drawable zones, multiple cameras, and Telegram and email alerts.</p>
+              <h4>The hardest part</h4>
+              <p class="p-challenge">Making it fast enough to watch live. Each frame took 774 ms on a 2 core CPU. An OpenVINO copy of YOLO, optical flow at half resolution and single pass models brought it down to 310 ms, with the same accuracy.</p>
+            </div>
+          </div>
+        </li>
+        <li class="project reveal" id="proj-maintenix-ai" data-skills="ml backend reliability frontend">
+          <span class="num" aria-hidden="true">06</span>
+          <div class="p-head">
+            <h3 class="p-name">Maintenix AI</h3>
+            <p class="tags"><span>Python</span><span>scikit-learn</span><span>XGBoost</span><span>SHAP</span><span>FastAPI</span><span>React</span><span>Docker</span></p>
+          </div>
+          <div class="p-body">
+            <p class="p-what">Predicts which machines will fail in the next 48 hours from sensor data, explains each prediction, and turns it into alerts and work orders for the people who fix them.</p>
+            <div class="p-actions">
+            <a href="https://github.com/Maggiee18/maintenix-ai" target="_blank" rel="noopener">Code<span class="sr-only">: Maintenix AI (opens in a new tab)</span></a>
+              <button type="button" class="p-explore" aria-expanded="false" aria-controls="proj-maintenix-ai-more">Explore project</button>
+            </div>
+            <div class="p-more" id="proj-maintenix-ai-more" hidden>
+              <h4>How I know it works</h4>
+              <p class="p-proof">Models trained on NASA turbofan data and chosen by validation PR-AUC, a versioned model registry, and 120 backend, ML, frontend and end to end tests.</p>
+            </div>
+          </div>
+        </li>
+        <li class="project reveal" id="proj-noise-robust-speech-recognition" data-skills="ml speech">
+          <span class="num" aria-hidden="true">07</span>
+          <div class="p-head">
+            <h3 class="p-name">Noise robust speech recognition <span class="status">In progress</span></h3>
+            <p class="tags"><span>Python</span><span>PyTorch</span><span>LibriSpeech</span><span>MUSAN</span></p>
+          </div>
+          <div class="p-body">
+            <p class="p-what">A speech recognition model built from scratch and tested against real background noise, to measure how much each training technique helps when audio gets messy.</p>
+            <div class="p-actions">
+            
+              <button type="button" class="p-explore" aria-expanded="false" aria-controls="proj-noise-robust-speech-recognition-more">Explore project</button>
+            </div>
+            <div class="p-more" id="proj-noise-robust-speech-recognition-more" hidden>
+              <h4>How I know it works</h4>
+              <p class="p-proof">Baseline CNN-BiLSTM trained on 100 hours of audio: 20.1% word error rate on clean speech, 69.9% in heavy noise. Noise augmented models are training now.</p>
+            </div>
+          </div>
+        </li>
+        <li class="project reveal" id="proj-lenny-growth-assistant" data-skills="agents backend reliability">
+          <span class="num" aria-hidden="true">08</span>
+          <div class="p-head">
+            <h3 class="p-name">Lenny Growth Assistant</h3>
+            <p class="tags"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>pgvector</span><span>Ollama</span><span>Anthropic</span><span>Next.js</span></p>
+          </div>
+          <div class="p-body">
+            <p class="p-what">Answers product and growth questions from Lenny's Podcast transcripts, always with sources, and says so plainly when the transcripts don't support an answer.</p>
+            <div class="p-actions">
+            <a href="https://github.com/Maggiee18/lenny-growth-assistant" target="_blank" rel="noopener">Code<span class="sr-only">: Lenny Growth Assistant (opens in a new tab)</span></a>
+              <button type="button" class="p-explore" aria-expanded="false" aria-controls="proj-lenny-growth-assistant-more">Explore project</button>
+            </div>
+            <div class="p-more" id="proj-lenny-growth-assistant-more" hidden>
+              <h4>How I know it works</h4>
+              <p class="p-proof">An evaluation harness caught a search bug that silently returned nothing. I traced it through query plans to an over tuned index, fixed it, and wrote it up.</p>
+            </div>
+          </div>
+        </li>
+        <li class="project reveal" id="proj-gem-cascade" data-skills="algorithms frontend reliability">
+          <span class="num" aria-hidden="true">09</span>
+          <div class="p-head">
+            <h3 class="p-name">Gem Cascade</h3>
+            <p class="tags"><span>JavaScript</span><span>HTML</span><span>CSS</span></p>
+          </div>
+          <div class="p-body">
+            <p class="p-what">A match-3 puzzle game in plain JavaScript with chain reactions, swipe controls and gems that stay readable for color blind players.</p>
+            <div class="p-actions">
+            <a href="https://maggiee18.github.io/gem-cascade/" target="_blank" rel="noopener">Play it<span class="sr-only">: Gem Cascade (opens in a new tab)</span></a>
+            <a href="https://github.com/Maggiee18/gem-cascade" target="_blank" rel="noopener">Code<span class="sr-only">: Gem Cascade (opens in a new tab)</span></a>
+              <button type="button" class="p-explore" aria-expanded="false" aria-controls="proj-gem-cascade-more">Explore project</button>
+            </div>
+            <div class="p-more" id="proj-gem-cascade-more" hidden>
+              <h4>How I know it works</h4>
+              <p class="p-proof">Union-find detects L and T shaped matches, breadth first search resolves chained blasts, and a bot simulator tuned each level by win rate.</p>
+            </div>
+          </div>
+        </li>
+        <li class="project reveal" id="proj-smart-crowd-management" data-skills="backend frontend">
+          <span class="num" aria-hidden="true">10</span>
+          <div class="p-head">
+            <h3 class="p-name">Smart Crowd Management</h3>
+            <p class="tags"><span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span><span>Socket.io</span></p>
+          </div>
+          <div class="p-body">
+            <p class="p-what">Event check-ins by QR code with live crowd counts and overcrowding alerts pushed to organisers in real time.</p>
+            <div class="p-actions">
+            <a href="https://github.com/Maggiee18/smart-crowd-management-event-safety-system" target="_blank" rel="noopener">Code<span class="sr-only">: Smart Crowd Management (opens in a new tab)</span></a>
+              <button type="button" class="p-explore" aria-expanded="false" aria-controls="proj-smart-crowd-management-more">Explore project</button>
+            </div>
+            <div class="p-more" id="proj-smart-crowd-management-more" hidden>
+              <h4>How I know it works</h4>
+              <p class="p-proof">Real time updates over Socket.io rooms, duplicate entry prevention, and email tickets.</p>
+            </div>
+          </div>
+        </li>
+        <li class="project reveal" id="proj-finpilot-ai" data-skills="finance frontend">
+          <span class="num" aria-hidden="true">11</span>
+          <div class="p-head">
+            <h3 class="p-name">FinPilot AI <span class="status">In progress</span></h3>
+            <p class="tags"><span>Kotlin</span><span>Jetpack Compose</span><span>Material 3</span></p>
+          </div>
+          <div class="p-body">
+            <p class="p-what">An Android app for tracking spending, budgets and reports, with money stored as whole paise so totals never drift.</p>
+            <div class="p-actions">
+            <a href="https://github.com/Maggiee18/FinPilot-AI" target="_blank" rel="noopener">Code<span class="sr-only">: FinPilot AI (opens in a new tab)</span></a>
+              <button type="button" class="p-explore" aria-expanded="false" aria-controls="proj-finpilot-ai-more">Explore project</button>
+            </div>
+            <div class="p-more" id="proj-finpilot-ai-more" hidden>
+              <h4>How I know it works</h4>
+              <p class="p-proof">MVVM with StateFlow and type safe navigation, with the money logic unit tested on its own.</p>
+            </div>
+          </div>
+        </li>
+      </ol>
     </section>
 
     <!-- ============ STATEMENT ============ -->
@@ -135,9 +344,35 @@
       </div>
     </section>
 
+    <!-- ============ JOURNEY ============ -->
+    <section class="journey" id="journey" aria-labelledby="journey-title">
+      <div class="section-head">
+        <p class="kicker">03 · Journey</p>
+        <h2 id="journey-title" class="big reveal">How I <em>got here</em></h2>
+      </div>
+      <ol class="timeline" id="timeline">
+        <li class="t-item reveal">
+          <span class="t-year">2023</span>
+          <div class="t-card"><h3>Started B.Tech CSE, AI and ML</h3><p>Joined SRM University AP to study computer science, specialising in AI and ML.</p></div>
+        </li>
+        <li class="t-item reveal">
+          <span class="t-year">2025</span>
+          <div class="t-card"><h3>First internship and hackathon</h3><p>Salesforce internship at SmartBridge from May to July, and SIH 2025 internal hackathon finalist with my team, top 45 of 260.</p></div>
+        </li>
+        <li class="t-item reveal">
+          <span class="t-year">2026</span>
+          <div class="t-card"><h3>Building AI applications</h3><p>AI agents, computer vision and full stack apps, including LeadScout, CrowdGuard and a fraud investigation agent for the TigerGraph Hacker House Goa challenge.</p></div>
+        </li>
+        <li class="t-item t-next reveal">
+          <span class="t-year">2027</span>
+          <div class="t-card"><h3>Graduating, and the next adventure</h3><p>Looking for internships and full time roles where I can build AI that solves real problems.</p></div>
+        </li>
+      </ol>
+    </section>
+
     <!-- ============ CONTACT ============ -->
     <section class="contact" id="contact" aria-labelledby="contact-title">
-      <p class="kicker">03 · Contact</p>
+      <p class="kicker">04 · Contact</p>
       <h2 id="contact-title" class="huge reveal">Let's build something <em>useful.</em></h2>
       <a class="mail magnetic" href="mailto:annepu.saimeghana@gmail.com">annepu.saimeghana@gmail.com</a>
       <div class="socials">
@@ -155,5 +390,6 @@
 
   <script src="data.js"></script>
   <script src="main.js" defer></script>
+  <script src="extras.js" defer></script>
 </body>
 </html>

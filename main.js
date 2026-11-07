@@ -6,7 +6,7 @@
 (function () {
   'use strict';
 
-  const { SKILLS, PROJECTS } = window.PORTFOLIO;
+  const { SKILLS } = window.PORTFOLIO;
   const $ = (s, r = document) => r.querySelector(s);
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
@@ -21,36 +21,34 @@
   /* =========================================================
      Work list
      ========================================================= */
+  // Projects live in index.html (so search engines and AI tools can read them);
+  // this reads them back into data the tour, assistant and terminal can use.
   const list = $('#projects');
-  PROJECTS.forEach((p, i) => {
-    const li = document.createElement('li');
-    li.className = 'project reveal';
-    li.id = 'p' + i;
-    li.dataset.skills = p.skills.join(' ');
-    li.innerHTML = `
-      <span class="num">${String(i + 1).padStart(2, '0')}</span>
-      <div>
-        <h3 class="p-name"></h3>
-        <div class="tags"></div>
-      </div>
-      <div>
-        <p class="p-what"></p>
-        <p class="p-proof"></p>
-        <div class="p-links"></div>
-      </div>`;
-    const h3 = li.querySelector('.p-name');
-    h3.textContent = p.name;
-    if (p.status) { const s = document.createElement('span'); s.className = 'status'; s.textContent = p.status; h3.append(s); }
-    p.stack.split(',').forEach((t) => { const s = document.createElement('span'); s.textContent = t.trim(); li.querySelector('.tags').append(s); });
-    li.querySelector('.p-what').textContent = p.what;
-    li.querySelector('.p-proof').textContent = p.proof;
-    p.links.forEach((l) => {
-      const a = document.createElement('a');
-      a.href = l.href; a.target = '_blank'; a.rel = 'noopener'; a.textContent = l.label;
-      a.setAttribute('aria-label', `${l.label}: ${p.name} (opens in a new tab)`);
-      li.querySelector('.p-links').append(a);
-    });
-    list.append(li);
+  const PROJECTS = [...list.querySelectorAll('.project')].map((li, i) => {
+    const name = li.querySelector('.p-name').childNodes[0].textContent.trim();
+    return {
+      i, el: li, id: li.id, name,
+      status: li.querySelector('.status')?.textContent || '',
+      skills: li.dataset.skills.split(' '),
+      what: li.querySelector('.p-what').textContent.trim(),
+      proof: li.querySelector('.p-proof')?.textContent.trim() || '',
+      challenge: li.querySelector('.p-challenge')?.textContent.trim() || '',
+      stack: [...li.querySelectorAll('.tags span')].map((t) => t.textContent),
+      links: [...li.querySelectorAll('.p-actions a')].map((a) => ({ label: a.childNodes[0].textContent.trim(), href: a.href })),
+    };
+  });
+
+  // "Explore project" opens the full story in place
+  list.addEventListener('click', (e) => {
+    const btn = e.target.closest('.p-explore');
+    if (!btn) return;
+    const more = document.getElementById(btn.getAttribute('aria-controls'));
+    const open = btn.getAttribute('aria-expanded') !== 'true';
+    btn.setAttribute('aria-expanded', String(open));
+    btn.textContent = open ? 'Show less' : 'Explore project';
+    btn.closest('.project').classList.toggle('open', open);
+    if (open) { more.hidden = false; requestAnimationFrame(() => more.classList.add('show')); }
+    else { more.classList.remove('show'); more.hidden = true; }
   });
 
   // chips: one row in the hero (opens the tour), one above the work list (filters)
@@ -233,7 +231,7 @@
   }
   function openTour(id) {
     const skill = SKILLS.find((x) => x.id === id);
-    const items = PROJECTS.map((p, i) => ({ p, i })).filter(({ p }) => p.skills.includes(id));
+    const items = PROJECTS.filter((p) => p.skills.includes(id)).map((p) => ({ p, i: p.i }));
     stopVoice(); endRun(); clearTimeout(auto);
     setFilter(id);
     tour.style.setProperty('--c', COLORS[id] || '#f5b942');
@@ -269,11 +267,16 @@
     if (reset) { setFilter(null); say('Pick another skill whenever you like!'); }
   }
   function goToProject(i) {
-    const el = $('#p' + i);
+    const p = PROJECTS[i];
+    const el = p.el;
     el.classList.add('in');
-    el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+    const btn = el.querySelector('.p-explore');
+    if (btn.getAttribute('aria-expanded') !== 'true') btn.click();
+    el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
     el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
   }
+  // shared with extras.js (the assistant and terminal mode)
+  Object.assign(window.PORTFOLIO, { PROJECTS, goToProject, setFilter, count });
   $('.tour-close', tour).addEventListener('click', () => closeTour(true));
   $('.tour-more', tour).addEventListener('click', () => closeTour(false));
   voiceBtn.addEventListener('click', () => { muted = !muted; refreshVoice(); if (muted && synth) synth.cancel(); });
@@ -312,6 +315,12 @@
     const t = (window.innerHeight * 0.85 - r.top) / (r.height + window.innerHeight * 0.35);
     const n = reduce ? wordEls.length : Math.round(Math.max(0, Math.min(1, t)) * wordEls.length);
     wordEls.forEach((w, i) => w.classList.toggle('lit', i < n));
+    const tl = $('#timeline');
+    if (tl) {
+      const tr = tl.getBoundingClientRect();
+      const f = reduce ? 1 : Math.max(0, Math.min(1, (window.innerHeight * 0.7 - tr.top) / tr.height));
+      tl.style.setProperty('--fill', f.toFixed(3));
+    }
   }
   window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
   onScroll();
