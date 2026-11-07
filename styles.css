@@ -89,12 +89,12 @@ button { font: inherit; color: inherit; }
   text-align: center;
   font: 800 clamp(46px, 8.3vw, 150px)/.9 var(--display);
   letter-spacing: -.035em; white-space: nowrap;
-  color: transparent; -webkit-text-stroke: 1.5px rgba(255, 255, 255, .16);
+  color: rgba(255, 255, 255, .09); -webkit-text-stroke: 1.5px rgba(255, 255, 255, .34);
   user-select: none;
   transform: translate3d(calc(var(--px, 0) * -18px), calc(var(--py, 0) * -10px), 0);
 }
 .giant span { display: block; }
-.giant span + span { color: rgba(255, 255, 255, .045); }
+.giant span + span { color: transparent; -webkit-text-stroke: 1.5px rgba(245, 185, 66, .55); }
 
 .stage { position: absolute; inset: 0; z-index: 1; pointer-events: none; perspective: 900px; }
 .floor {
