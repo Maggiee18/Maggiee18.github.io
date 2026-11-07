@@ -26,6 +26,17 @@
       links: [{ label: 'Code', href: 'https://github.com/Maggiee18/hhgoa-fraud-agent' }],
     },
     {
+      name: 'LeadScout',
+      what: 'An AI lead qualifier for real estate agents. It reads a property inquiry, scores the lead Hot, Warm or Cold with every point explained, and drafts the first reply. The AI only extracts the facts, so scores stay deterministic and auditable.',
+      proof: '77 tests on SQLite and PostgreSQL with CI on every push, accounts with secure sessions and password reset, a rules fallback when the AI hits its rate limit, and an interactive 3D landing page. Deployed live.',
+      stack: 'Python, FastAPI, Groq, PostgreSQL, JavaScript, Three.js, Docker',
+      skills: ['agents', 'backend', 'reliability', 'frontend'],
+      links: [
+        { label: 'Try it', href: 'https://leadscout-3588.onrender.com' },
+        { label: 'Code', href: 'https://github.com/Maggiee18/leadscout' },
+      ],
+    },
+    {
       name: 'SecureBank',
       what: 'A banking API and web app built around the hard parts of moving money: atomic transfers that roll back on failure, optimistic locking for simultaneous withdrawals, and idempotency keys so a retried payment never goes through twice.',
       proof: '84 tests, including parallel withdrawals and a forced failure halfway through a transfer. CI on every push and deployed live.',
