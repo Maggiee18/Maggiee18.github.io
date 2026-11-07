@@ -142,35 +142,33 @@
     }, Math.max(3800, LINES[line].length * 55));
   }
 
-  // voice
-  const synth = window.speechSynthesis;
-  let voice = null;
-  function pickVoice() {
-    if (!synth) return;
-    const vs = synth.getVoices();
-    if (!vs.length) return;
-    const female = /female|neerja|aditi|veena|raveena|heera|kalpana|zira|aria|jenny|sonia|libby|samantha|karen|moira|tessa|google uk english female|google us english/i;
-    voice =
-      vs.find((v) => /en-IN/i.test(v.lang) && /neerja/i.test(v.name)) ||
-      vs.find((v) => /en-IN/i.test(v.lang) && female.test(v.name)) ||
-      vs.find((v) => /^en/i.test(v.lang) && /natural/i.test(v.name) && female.test(v.name)) ||
-      vs.find((v) => /^en/i.test(v.lang) && female.test(v.name)) ||
-      null;
-    playBtn.hidden = !voice;
-    refreshVoice();
-  }
-  if (synth) { pickVoice(); synth.addEventListener?.('voiceschanged', pickVoice); }
-  function utter(text, onEnd) {
-    const u = new SpeechSynthesisUtterance(text.replace('Hey!!', 'Hey!'));
-    u.voice = voice; u.lang = voice.lang; u.rate = 1.03; u.pitch = 1.08;
-    u.onstart = () => { speaking = true; syncState(); };
-    u.onend = () => { speaking = false; syncState(); onEnd && onEnd(); };
-    u.onerror = () => { speaking = false; syncState(); };
-    synth.speak(u);
+  // voice: Meghana's own recordings, one file per line in assets/voice/ (line1.mp3 ... line5.mp3).
+  // A skill tour plays assets/voice/tour-<skill>.mp3 if that file exists, otherwise it is text only.
+  // The Read aloud button only appears once the first recording is known to load.
+  const VOICE_DIR = 'assets/voice/';
+  const audio = new Audio();
+  audio.preload = 'auto';
+  let current = 0;  // which playback this is, so a stopped one can't trigger the next line
+  let hasVoice = false;
+  playBtn.hidden = true;
+  const probe = new Audio();
+  probe.preload = 'metadata';
+  probe.addEventListener('loadedmetadata', () => { hasVoice = true; playBtn.hidden = false; refreshVoice(); }, { once: true });
+  probe.src = VOICE_DIR + 'line1.mp3';
+  function play(src, onEnd, onFail) {
+    const id = ++current;
+    audio.pause();
+    audio.src = src;
+    audio.onplaying = () => { if (id === current) { speaking = true; syncState(); } };
+    audio.onended = () => { if (id !== current) return; speaking = false; syncState(); onEnd && onEnd(); };
+    audio.onerror = () => { if (id !== current) return; speaking = false; syncState(); onFail && onFail(); };
+    const p = audio.play();
+    if (p && p.catch) p.catch(() => { if (id === current) { speaking = false; syncState(); onFail && onFail(); } });
   }
   function stopVoice() {
     reading = false;
-    if (synth) synth.cancel();
+    current++;
+    audio.pause();
     speaking = false; syncState();
     $('span', playBtn).textContent = 'Read aloud';
   }
@@ -178,12 +176,12 @@
     if (!reading || i >= LINES.length) { stopVoice(); return; }
     show(i);
     clearInterval(typer); textEl.textContent = LINES[i]; typing = false; syncState();
-    utter(LINES[i], () => setTimeout(() => readFrom(i + 1), 320));
+    play(`${VOICE_DIR}line${i + 1}.mp3`, () => setTimeout(() => readFrom(i + 1), 280), stopVoice);
   }
   playBtn.addEventListener('click', () => {
     if (reading) { stopVoice(); return; }
-    if (!voice) return;
-    endRun(); clearTimeout(auto); synth.cancel();
+    if (!hasVoice) return;
+    endRun(); clearTimeout(auto);
     reading = true;
     $('span', playBtn).textContent = 'Stop';
     readFrom(line < 0 ? 0 : line);
@@ -210,7 +208,7 @@
 
   // the skill tour
   function refreshVoice() {
-    voiceBtn.hidden = !voice;
+    voiceBtn.hidden = !hasVoice;
     voiceBtn.textContent = muted ? 'Unmute voice' : 'Mute voice';
   }
   function markNow(k) {
@@ -230,8 +228,10 @@
     markNow(st.k);
     if (!guide.classList.contains('hide')) say(st.text);
     const advance = () => { if (!run || run.id !== id) return; run.i++; run.timer = setTimeout(() => step(id), 380); };
-    if (voice && !muted && synth) utter(st.text, advance);
-    else run.timer = setTimeout(advance, Math.max(3400, st.text.length * 58));
+    const wait = () => { if (run && run.id === id) run.timer = setTimeout(advance, Math.max(3400, st.text.length * 58)); };
+    // only the tour's opening line has a recording; the project lines are read on screen
+    if (st.clip && hasVoice && !muted) play(st.clip, advance, wait);
+    else wait();
   }
   function openTour(id) {
     const skill = SKILLS.find((x) => x.id === id);
@@ -258,7 +258,8 @@
     tour.hidden = false;
     hero.classList.add('touring');
     tour.classList.remove('open'); void tour.offsetWidth; tour.classList.add('open');
-    const steps = [{ text: `${skill.short}! I've used it in ${items.length} project${items.length === 1 ? '' : 's'}. Here's a quick tour.`, k: -1 }];
+    const steps = [{ text: `${skill.short}! Here's a quick tour of the projects where I used it.`, k: -1,
+      clip: `${VOICE_DIR}tour-${id}.mp3` }];
     items.forEach(({ p }, k) => steps.push({ text: `${p.name}. ${firstSentence(p.what)}`, k }));
     steps.push({ text: 'Tap any project for the full story, or pick another skill!', k: -1 });
     run = { id: ++runId, steps, i: 0, timer: 0 };
@@ -283,7 +284,7 @@
   Object.assign(window.PORTFOLIO, { PROJECTS, goToProject, setFilter, count });
   $('.tour-close', tour).addEventListener('click', () => closeTour(true));
   $('.tour-more', tour).addEventListener('click', () => closeTour(false));
-  voiceBtn.addEventListener('click', () => { muted = !muted; refreshVoice(); if (muted && synth) synth.cancel(); });
+  voiceBtn.addEventListener('click', () => { muted = !muted; refreshVoice(); if (muted) { current++; audio.pause(); speaking = false; syncState(); } });
   tour.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeTour(true); });
 
   // stop talking once the hero is out of view

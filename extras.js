@@ -113,7 +113,7 @@
     if (has(/\b(education|college|university|study|studying|degree|btech|b tech|graduat|year)\b/))
       return `${esc(KB.education.join(', '))}.`;
     if (has(/\b(speak|spoken)\b/))
-      return "I anchored my university's freshers' event in Telugu and English.";
+      return "I speak Telugu, Hindi and English.";
     if (has(/\b(language|languages)\b/))
       return `In my projects I've written ${langsUsed.slice(0, -1).join(', ')} and ${langsUsed.slice(-1)}. Ask me about any of them, for example "Which projects use Java?"`;
     if (has(/\b(interest|interests|passion|passionate|love|like to)\b/))
