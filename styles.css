@@ -355,7 +355,8 @@ button { font: inherit; color: inherit; }
 .card h3 { margin: 0 0 6px; font: 700 1.6rem/1.15 var(--display); }
 .card p { margin: 0 0 8px; color: var(--soft); }
 .card .when { color: var(--muted); font-size: .92rem; }
-.wins { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 40px; }
+.wins { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: 12px; }
+.card-wide .wins { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 40px; }
 .wins li { position: relative; padding-left: 26px; color: var(--soft); }
 .wins li::before { content: "✦"; position: absolute; left: 0; top: 0; color: var(--gold); }
 
@@ -415,7 +416,7 @@ button { font: inherit; color: inherit; }
   .scroll-cue { display: none; }
   .project { grid-template-columns: 1fr; gap: 6px; padding: 28px 0; }
   .num { padding-top: 0; }
-  .about-grid, .wins { grid-template-columns: 1fr; }
+  .about-grid, .wins, .card-wide .wins { grid-template-columns: 1fr; }
   .card { padding: 24px; }
   .giant { --px: 0 !important; }
 }

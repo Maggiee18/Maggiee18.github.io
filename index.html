@@ -97,8 +97,8 @@
       </div>
       <div class="filter" role="group" aria-label="Filter projects by skill" id="filter"></div>
       <p class="filter-note" id="filter-note" aria-live="polite"></p>
-      <ol class="projects" id="projects">
-        <li class="project reveal" id="proj-agentic-fraud-investigation-agent" data-skills="agents finance backend">
+      <div class="projects" id="projects">
+        <article class="project reveal" id="proj-agentic-fraud-investigation-agent" data-skills="agents finance backend">
           <span class="num" aria-hidden="true">01</span>
           <div class="p-head">
             <h3 class="p-name">Agentic Fraud Investigation Agent</h3>
@@ -115,8 +115,8 @@
               <p class="p-proof">Ran all 20 benchmark cases end to end on a live graph, through both a direct and an MCP server backend.</p>
             </div>
           </div>
-        </li>
-        <li class="project reveal" id="proj-leadscout" data-skills="agents backend reliability frontend">
+        </article>
+        <article class="project reveal" id="proj-leadscout" data-skills="agents backend reliability frontend">
           <span class="num" aria-hidden="true">02</span>
           <div class="p-head">
             <h3 class="p-name">LeadScout</h3>
@@ -136,8 +136,8 @@
               <p class="p-challenge">Groq retired the model I was using halfway through, and the free tier allows only 8,000 tokens a minute. I switched models, capped every request, and added a rules fallback so scoring never stops when the AI hits its limit.</p>
             </div>
           </div>
-        </li>
-        <li class="project reveal" id="proj-securebank" data-skills="backend finance reliability frontend">
+        </article>
+        <article class="project reveal" id="proj-securebank" data-skills="backend finance reliability frontend">
           <span class="num" aria-hidden="true">03</span>
           <div class="p-head">
             <h3 class="p-name">SecureBank</h3>
@@ -155,8 +155,8 @@
               <p class="p-proof">84 tests, including parallel withdrawals and a forced failure halfway through a transfer. CI on every push and deployed live.</p>
             </div>
           </div>
-        </li>
-        <li class="project reveal" id="proj-pitchmirror" data-skills="agents speech backend frontend">
+        </article>
+        <article class="project reveal" id="proj-pitchmirror" data-skills="agents speech backend frontend">
           <span class="num" aria-hidden="true">04</span>
           <div class="p-head">
             <h3 class="p-name">PitchMirror</h3>
@@ -174,8 +174,8 @@
               <p class="p-proof">Several specialized LLM agents with schema checks and rule based fallbacks, so it still works offline. Deployed with a public demo.</p>
             </div>
           </div>
-        </li>
-        <li class="project reveal" id="proj-crowdguard" data-skills="ml backend frontend">
+        </article>
+        <article class="project reveal" id="proj-crowdguard" data-skills="ml backend frontend">
           <span class="num" aria-hidden="true">05</span>
           <div class="p-head">
             <h3 class="p-name">CrowdGuard</h3>
@@ -194,8 +194,8 @@
               <p class="p-challenge">Making it fast enough to watch live. Each frame took 774 ms on a 2 core CPU. An OpenVINO copy of YOLO, optical flow at half resolution and single pass models brought it down to 310 ms, with the same accuracy.</p>
             </div>
           </div>
-        </li>
-        <li class="project reveal" id="proj-maintenix-ai" data-skills="ml backend reliability frontend">
+        </article>
+        <article class="project reveal" id="proj-maintenix-ai" data-skills="ml backend reliability frontend">
           <span class="num" aria-hidden="true">06</span>
           <div class="p-head">
             <h3 class="p-name">Maintenix AI</h3>
@@ -212,8 +212,8 @@
               <p class="p-proof">Models trained on NASA turbofan data and chosen by validation PR-AUC, a versioned model registry, and 120 backend, ML, frontend and end to end tests.</p>
             </div>
           </div>
-        </li>
-        <li class="project reveal" id="proj-noise-robust-speech-recognition" data-skills="ml speech">
+        </article>
+        <article class="project reveal" id="proj-noise-robust-speech-recognition" data-skills="ml speech">
           <span class="num" aria-hidden="true">07</span>
           <div class="p-head">
             <h3 class="p-name">Noise robust speech recognition <span class="status">In progress</span></h3>
@@ -230,8 +230,8 @@
               <p class="p-proof">Baseline CNN-BiLSTM trained on 100 hours of audio: 20.1% word error rate on clean speech, 69.9% in heavy noise. Noise augmented models are training now.</p>
             </div>
           </div>
-        </li>
-        <li class="project reveal" id="proj-lenny-growth-assistant" data-skills="agents backend reliability">
+        </article>
+        <article class="project reveal" id="proj-lenny-growth-assistant" data-skills="agents backend reliability">
           <span class="num" aria-hidden="true">08</span>
           <div class="p-head">
             <h3 class="p-name">Lenny Growth Assistant</h3>
@@ -248,8 +248,8 @@
               <p class="p-proof">An evaluation harness caught a search bug that silently returned nothing. I traced it through query plans to an over tuned index, fixed it, and wrote it up.</p>
             </div>
           </div>
-        </li>
-        <li class="project reveal" id="proj-gem-cascade" data-skills="algorithms frontend reliability">
+        </article>
+        <article class="project reveal" id="proj-gem-cascade" data-skills="algorithms frontend reliability">
           <span class="num" aria-hidden="true">09</span>
           <div class="p-head">
             <h3 class="p-name">Gem Cascade</h3>
@@ -267,8 +267,8 @@
               <p class="p-proof">Union-find detects L and T shaped matches, breadth first search resolves chained blasts, and a bot simulator tuned each level by win rate.</p>
             </div>
           </div>
-        </li>
-        <li class="project reveal" id="proj-smart-crowd-management" data-skills="backend frontend">
+        </article>
+        <article class="project reveal" id="proj-smart-crowd-management" data-skills="backend frontend">
           <span class="num" aria-hidden="true">10</span>
           <div class="p-head">
             <h3 class="p-name">Smart Crowd Management</h3>
@@ -285,8 +285,8 @@
               <p class="p-proof">Real time updates over Socket.io rooms, duplicate entry prevention, and email tickets.</p>
             </div>
           </div>
-        </li>
-        <li class="project reveal" id="proj-finpilot-ai" data-skills="finance frontend">
+        </article>
+        <article class="project reveal" id="proj-finpilot-ai" data-skills="finance frontend">
           <span class="num" aria-hidden="true">11</span>
           <div class="p-head">
             <h3 class="p-name">FinPilot AI <span class="status">In progress</span></h3>
@@ -303,8 +303,8 @@
               <p class="p-proof">MVVM with StateFlow and type safe navigation, with the money logic unit tested on its own.</p>
             </div>
           </div>
-        </li>
-      </ol>
+        </article>
+      </div>
     </section>
 
     <!-- ============ STATEMENT ============ -->
@@ -330,13 +330,23 @@
           <p class="when">May to July 2025</p>
           <p>Built CRM features from functional requirements with custom objects, validation rules and automated workflows, then tested, validated data and debugged issues before release.</p>
         </article>
-        <article class="card card-wide reveal">
-          <p class="card-k">Recognition</p>
+        <article class="card reveal">
+          <p class="card-k">Certifications</p>
+          <ul class="wins">
+            <li>Oracle Certified Professional, Java SE 17 Developer</li>
+            <li>MongoDB Associate Developer</li>
+          </ul>
+        </article>
+        <article class="card reveal">
+          <p class="card-k">Hackathons and pitches</p>
           <ul class="wins">
             <li>Team finalist, top 45 of 260 teams, SIH 2025 internal hackathon at SRM University AP</li>
             <li>Pitched a verification layer to catch hallucinated legal answers from ChatGPT, Idea Bootcamp 2.0, E-Cell SRM AP</li>
-            <li>Oracle Certified Professional, Java SE 17 Developer</li>
-            <li>MongoDB Associate Developer</li>
+          </ul>
+        </article>
+        <article class="card card-wide reveal">
+          <p class="card-k">Scholarship and leadership</p>
+          <ul class="wins">
             <li>Amazon Future Engineer Scholar, Foundation For Excellence, Cohort 3</li>
             <li>Anchored the freshers' event at SRM University AP in Telugu and English</li>
           </ul>
