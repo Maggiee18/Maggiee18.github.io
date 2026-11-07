@@ -225,78 +225,11 @@ export function mountHero({ canvas, labels, skills, projects, onReady }) {
     if (P) P.preview(id);
   }
   function choose(id) {
-    if (tapping) return;
     const next = active === id ? null : id;
     if (!P) { active = next; refreshLabels(); return; }
-    if (!next || reduced) { P.select(next, "hero"); return; }
-    tapTo(id, () => P.select(next, "hero"));
+    P.select(next, "hero");
   }
 
-  /* ---- her hand reaches out and taps the shape ---- */
-  const HAND = `<svg viewBox="0 0 64 64" aria-hidden="true">
-    <ellipse cx="17" cy="41" rx="7" ry="10" transform="rotate(-28 17 41)" class="h-skin"/>
-    <rect x="26" y="3" width="12" height="32" rx="6" class="h-skin"/>
-    <rect x="17" y="25" width="33" height="30" rx="13" class="h-skin"/>
-    <path d="M38 30 h8 M38 37 h9 M38 44 h8" class="h-line"/>
-    <rect x="28" y="5" width="5" height="7" rx="2.5" class="h-nail"/>
-    <rect x="21" y="52" width="25" height="10" rx="4" class="h-cuff"/>
-  </svg>`;
-  let tapping = false;
-  const tapLayer = document.createElement("div");
-  tapLayer.className = "tap-layer";
-  canvas.parentElement.append(tapLayer);
-  function screenOf(vec) {
-    const p = vec.clone().project(camera);
-    return { x: (p.x * 0.5 + 0.5) * W, y: (-p.y * 0.5 + 0.5) * H };
-  }
-  function tapTo(id, done) {
-    const it = items.find((x) => x.mesh.userData.id === id);
-    if (!it) { done(); return; }
-    tapping = true;
-    const end = screenOf(it.mesh.getWorldPosition(new Vector3()));
-    const start = screenOf(new Vector3(end.x > W / 2 ? meW * 0.32 : -meW * 0.32, ME.height * 0.79, 0.2));
-    const ang = Math.atan2(end.x - start.x, start.y - end.y) * 180 / Math.PI;
-
-    // a glowing arc from her shoulder to the shape
-    const svgNS = "http://www.w3.org/2000/svg";
-    const trail = document.createElementNS(svgNS, "svg");
-    trail.setAttribute("class", "tap-trail");
-    trail.setAttribute("viewBox", `0 0 ${W} ${H}`);
-    const cx = (start.x + end.x) / 2, cy = Math.min(start.y, end.y) - 60;
-    const path = document.createElementNS(svgNS, "path");
-    path.setAttribute("d", `M${start.x} ${start.y} Q${cx} ${cy} ${end.x} ${end.y}`);
-    trail.append(path);
-    const hand = document.createElement("div");
-    hand.className = "tap-hand";
-    hand.innerHTML = HAND;
-    const ripple = document.createElement("div");
-    ripple.className = "tap-ripple";
-    ripple.style.left = `${end.x}px`; ripple.style.top = `${end.y}px`;
-    ripple.style.setProperty("--c", "#" + it.mesh.userData.color.getHexString());
-    tapLayer.append(trail, hand);
-
-    const len = path.getTotalLength();
-    path.style.strokeDasharray = len;
-    path.animate([{ strokeDashoffset: len, opacity: 1 }, { strokeDashoffset: 0, opacity: 1, offset: 0.55 }, { strokeDashoffset: 0, opacity: 0 }],
-      { duration: 1100, easing: "cubic-bezier(.3,.7,.2,1)", fill: "forwards" });
-    const at = (x, y, s) => `translate(${(x - 42).toFixed(1)}px, ${(y - 5).toFixed(1)}px) rotate(${ang.toFixed(1)}deg) scale(${s})`;
-    const mid = path.getPointAtLength(len * 0.5);
-    const anim = hand.animate([
-      { transform: at(start.x, start.y, 0.4), opacity: 0 },
-      { transform: at(mid.x, mid.y, 0.9), opacity: 1, offset: 0.3 },
-      { transform: at(end.x, end.y + 6, 1), opacity: 1, offset: 0.55 },
-      { transform: at(end.x, end.y + 12, 0.86), opacity: 1, offset: 0.68 },
-      { transform: at(end.x, end.y + 6, 1), opacity: 1, offset: 0.8 },
-      { transform: at(end.x, end.y + 20, 0.9), opacity: 0 },
-    ].map((k) => ({ ...k, easing: "ease-in-out" })), { duration: 1100, fill: "forwards" });
-    setTimeout(() => {
-      tapLayer.append(ripple);
-      ripple.animate([{ transform: "translate(-50%,-50%) scale(.2)", opacity: 0.9 }, { transform: "translate(-50%,-50%) scale(2.4)", opacity: 0 }],
-        { duration: 700, easing: "ease-out", fill: "forwards" });
-      done();
-    }, 720);
-    anim.onfinish = () => { trail.remove(); hand.remove(); setTimeout(() => ripple.remove(), 400); tapping = false; };
-  }
   document.addEventListener("portfolio:select", (e) => {
     active = e.detail.id;
     if (!reduced) hopT = 0.6;
@@ -397,7 +330,7 @@ export function mountHero({ canvas, labels, skills, projects, onReady }) {
     feetShadow.material.opacity = 1 - hop * 3;
 
     // orbit
-    if (!dragging) { spin += spinVel; spinVel *= 0.94; if (!reduced && !tapping && !active) spin += dt * 0.12; }
+    if (!dragging) { spin += spinVel; spinVel *= 0.94; if (!reduced && !active) spin += dt * 0.12; }
     orbit.rotation.y = spin;
     items.forEach(({ holder, mesh }) => {
       const u = mesh.userData;

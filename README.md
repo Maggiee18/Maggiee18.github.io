@@ -1,6 +1,6 @@
 # Sai Meghana Annepu: portfolio
 
-My personal site. A 3D version of me stands on a little stage with my skills floating around her as glossy shapes. Tap a shape and her hand reaches out and taps it, then she talks you through every project that uses that skill, in text and (where the browser has a voice) out loud. Further down, pick a skill on the left and the page draws a line to every project where I've used it.
+My personal site. A 3D version of me stands on a little stage with my skills floating around her as glossy shapes. Tap a shape and she talks you through every project that uses that skill, in text and (where the browser has a voice) out loud. Further down, pick a skill on the left and the page draws a line to every project where I've used it.
 
 Plain HTML, CSS and JavaScript, hosted on GitHub Pages. The only build step is the 3D hero, and the built file is already committed.
 
