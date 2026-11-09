@@ -578,4 +578,4 @@ body.term-on { overflow: hidden; }
 .project.featured .p-name { font-size: clamp(1.9rem, 3.6vw, 2.9rem); }
 .project.featured .p-what { color: var(--ink); }
 
-@media (min-width: 821px) { .intro .eyebrow { white-space: nowrap; } }
+@media (min-width: 1600px) { .intro .eyebrow { white-space: nowrap; } }

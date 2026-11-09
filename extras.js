@@ -228,7 +228,7 @@
   const out = $('.term-out', term), tin = $('#term-in', term);
   const slug = (p) => p.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   const FILES = {
-    'about.txt': () => ["Sai Meghana Annepu", 'Final year CSE (AI and ML), SRM University AP, graduating 2027', 'AI engineering, applied AI and product development'],
+    'about.txt': () => ["Sai Meghana Annepu", 'Final year CSE (AI and ML), SRM University AP, graduating 2027', 'AI engineering, applied AI, product development and product management'],
     'interests.txt': () => KB.interests,
     'contact.txt': () => [`email     ${KB.email}`, `github    ${KB.github}`, `linkedin  ${KB.linkedin}`],
     'certs.txt': () => KB.certs,
@@ -250,7 +250,7 @@
       '',
       'tip: Tab completes, arrow keys bring back old commands',
     ],
-    whoami: () => ['Sai Meghana Annepu', 'AI engineering | Applied AI | Product development', 'Final year CSE, SRM University AP'],
+    whoami: () => ['Sai Meghana Annepu', 'AI engineering | Applied AI | Product development & management', 'Final year CSE, SRM University AP'],
     ls: (a) => {
       if (/^projects\/?$/.test(a)) return PROJECTS.map((p) => slug(p) + '/');
       if (/^skills\/?$/.test(a)) return SKILLS.map((s) => s.id);
