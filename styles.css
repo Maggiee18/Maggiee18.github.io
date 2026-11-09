@@ -577,3 +577,5 @@ body.term-on { overflow: hidden; }
 .p-group small { font: 400 .9rem var(--body); letter-spacing: 0; text-transform: none; color: var(--muted); }
 .project.featured .p-name { font-size: clamp(1.9rem, 3.6vw, 2.9rem); }
 .project.featured .p-what { color: var(--ink); }
+
+@media (min-width: 821px) { .intro .eyebrow { white-space: nowrap; } }
