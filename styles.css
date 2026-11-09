@@ -570,3 +570,10 @@ body.term-on { overflow: hidden; }
 }
 @media (prefers-reduced-motion: reduce) { .p-more { opacity: 1; transform: none; } }
 @media (max-width: 820px) { body:has(.touring) .ask-fab, body:has(.touring) .say-hi { display: none; } }
+
+/* project groups */
+.p-group { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px; margin: 56px 0 4px; font: 700 .78rem var(--body); letter-spacing: .22em; text-transform: uppercase; color: var(--gold); }
+.p-group:first-child { margin-top: 0; }
+.p-group small { font: 400 .9rem var(--body); letter-spacing: 0; text-transform: none; color: var(--muted); }
+.project.featured .p-name { font-size: clamp(1.9rem, 3.6vw, 2.9rem); }
+.project.featured .p-what { color: var(--ink); }

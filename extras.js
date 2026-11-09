@@ -33,6 +33,7 @@
   KB.certs = KB.wins.filter((w) => /certified|associate developer/i.test(w));
   KB.interests = [
     'Building AI applications that solve real problems',
+    'Understanding user problems and turning them into products',
     'Full stack development, from sleek interfaces to solid backends',
     'Making machines do cool things',
     'Experimenting with new technologies',
@@ -227,7 +228,7 @@
   const out = $('.term-out', term), tin = $('#term-in', term);
   const slug = (p) => p.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   const FILES = {
-    'about.txt': () => ["Sai Meghana Annepu", 'Final year CSE (AI and ML), SRM University AP, graduating 2027', 'AI/ML enthusiast and full stack developer'],
+    'about.txt': () => ["Sai Meghana Annepu", 'Final year CSE (AI and ML), SRM University AP, graduating 2027', 'AI engineering, applied AI and product development'],
     'interests.txt': () => KB.interests,
     'contact.txt': () => [`email     ${KB.email}`, `github    ${KB.github}`, `linkedin  ${KB.linkedin}`],
     'certs.txt': () => KB.certs,
@@ -249,7 +250,7 @@
       '',
       'tip: Tab completes, arrow keys bring back old commands',
     ],
-    whoami: () => ['Sai Meghana Annepu', 'AI/ML enthusiast | Full stack developer', 'Final year CSE, SRM University AP'],
+    whoami: () => ['Sai Meghana Annepu', 'AI engineering | Applied AI | Product development', 'Final year CSE, SRM University AP'],
     ls: (a) => {
       if (/^projects\/?$/.test(a)) return PROJECTS.map((p) => slug(p) + '/');
       if (/^skills\/?$/.test(a)) return SKILLS.map((s) => s.id);

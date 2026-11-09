@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sai Meghana Annepu</title>
-  <meta name="description" content="Sai Meghana Annepu, final year CSE (AI/ML) student at SRM University AP. Full stack development and AI applications that solve real problems." />
+  <meta name="description" content="Sai Meghana Annepu, final year CSE (AI/ML) student at SRM University AP. AI engineering, applied AI and product development: AI applications that solve real problems, built and tested end to end." />
   <meta name="theme-color" content="#06070b" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -52,12 +52,12 @@
       </div>
 
       <div class="intro">
-        <p class="eyebrow">AI application developer · Full stack</p>
+        <p class="eyebrow">AI engineering · Applied AI · Product development</p>
         <h1 id="name" class="sr-only">Sai Meghana Annepu</h1>
         <p class="lede">
-          Final year CSE student at SRM University AP, specialising in AI and ML, with a serious love for making machines do cool things.
-          I'm passionate about full stack development and turning creative ideas into AI applications that solve real problems,
-          from sleek interfaces to solid backends. Always curious, always experimenting, and probably already planning the next
+          Final year CSE student at SRM University AP, specialising in AI and ML. I turn user needs into intelligent systems:
+          I start with the problem people actually have, find where new technology really helps, and build it into a working product,
+          from sleek interfaces to solid backends, with tests that prove it works. Always curious, always experimenting, and probably already planning the next
           project before this one's done. My code works on the first try about as often as my alarm does, but I never stop until it runs!
         </p>
         <div class="cta">
@@ -98,7 +98,8 @@
       <div class="filter" role="group" aria-label="Filter projects by skill" id="filter"></div>
       <p class="filter-note" id="filter-note" aria-live="polite"></p>
       <div class="projects" id="projects">
-        <article class="project reveal" id="proj-agentic-fraud-investigation-agent" data-skills="agents finance backend">
+        <div class="p-group" role="heading" aria-level="3"><span>Featured</span><small>The three I'd show first</small></div>
+        <article class="project featured reveal" id="proj-agentic-fraud-investigation-agent" data-skills="agents finance backend">
           <span class="num" aria-hidden="true">01</span>
           <div class="p-head">
             <h3 class="p-name">Agentic Fraud Investigation Agent</h3>
@@ -116,7 +117,7 @@
             </div>
           </div>
         </article>
-        <article class="project reveal" id="proj-leadscout" data-skills="agents backend reliability frontend">
+        <article class="project featured reveal" id="proj-leadscout" data-skills="agents backend reliability frontend">
           <span class="num" aria-hidden="true">02</span>
           <div class="p-head">
             <h3 class="p-name">LeadScout</h3>
@@ -137,7 +138,7 @@
             </div>
           </div>
         </article>
-        <article class="project reveal" id="proj-securebank" data-skills="backend finance reliability frontend">
+        <article class="project featured reveal" id="proj-securebank" data-skills="backend finance reliability frontend">
           <span class="num" aria-hidden="true">03</span>
           <div class="p-head">
             <h3 class="p-name">SecureBank</h3>
@@ -156,6 +157,7 @@
             </div>
           </div>
         </article>
+        <div class="p-group" role="heading" aria-level="3"><span>AI and product thinking</span><small>Built around how people actually use them</small></div>
         <article class="project reveal" id="proj-pitchmirror" data-skills="agents speech backend frontend">
           <span class="num" aria-hidden="true">04</span>
           <div class="p-head">
@@ -175,8 +177,27 @@
             </div>
           </div>
         </article>
-        <article class="project reveal" id="proj-crowdguard" data-skills="ml backend frontend">
+        <article class="project reveal" id="proj-lenny-growth-assistant" data-skills="agents backend reliability">
           <span class="num" aria-hidden="true">05</span>
+          <div class="p-head">
+            <h3 class="p-name">Lenny Growth Assistant</h3>
+            <p class="tags"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>pgvector</span><span>Ollama</span><span>Anthropic</span><span>Next.js</span></p>
+          </div>
+          <div class="p-body">
+            <p class="p-what">Answers product and growth questions from Lenny's Podcast transcripts, always with sources, and says so plainly when the transcripts don't support an answer.</p>
+            <div class="p-actions">
+            <a href="https://github.com/Maggiee18/lenny-growth-assistant" target="_blank" rel="noopener">Code<span class="sr-only">: Lenny Growth Assistant (opens in a new tab)</span></a>
+              <button type="button" class="p-explore" aria-expanded="false" aria-controls="proj-lenny-growth-assistant-more">Explore project</button>
+            </div>
+            <div class="p-more" id="proj-lenny-growth-assistant-more">
+              <h4>How I know it works</h4>
+              <p class="p-proof">An evaluation harness caught a search bug that silently returned nothing. I traced it through query plans to an over tuned index, fixed it, and wrote it up.</p>
+            </div>
+          </div>
+        </article>
+        <div class="p-group" role="heading" aria-level="3"><span>Applied AI and ML</span><small>Models trained, measured and explained</small></div>
+        <article class="project reveal" id="proj-crowdguard" data-skills="ml backend frontend">
+          <span class="num" aria-hidden="true">06</span>
           <div class="p-head">
             <h3 class="p-name">CrowdGuard</h3>
             <p class="tags"><span>Python</span><span>YOLOv8</span><span>OpenVINO</span><span>PyTorch</span><span>scikit-learn</span><span>OpenCV</span><span>FastAPI</span><span>WebSockets</span><span>React</span><span>Tailwind</span></p>
@@ -196,7 +217,7 @@
           </div>
         </article>
         <article class="project reveal" id="proj-maintenix-ai" data-skills="ml backend reliability frontend">
-          <span class="num" aria-hidden="true">06</span>
+          <span class="num" aria-hidden="true">07</span>
           <div class="p-head">
             <h3 class="p-name">Maintenix AI</h3>
             <p class="tags"><span>Python</span><span>scikit-learn</span><span>XGBoost</span><span>SHAP</span><span>FastAPI</span><span>React</span><span>Docker</span></p>
@@ -214,7 +235,7 @@
           </div>
         </article>
         <article class="project reveal" id="proj-noise-robust-speech-recognition" data-skills="ml speech">
-          <span class="num" aria-hidden="true">07</span>
+          <span class="num" aria-hidden="true">08</span>
           <div class="p-head">
             <h3 class="p-name">Noise robust speech recognition <span class="status">In progress</span></h3>
             <p class="tags"><span>Python</span><span>PyTorch</span><span>LibriSpeech</span><span>MUSAN</span></p>
@@ -231,26 +252,27 @@
             </div>
           </div>
         </article>
-        <article class="project reveal" id="proj-lenny-growth-assistant" data-skills="agents backend reliability">
-          <span class="num" aria-hidden="true">08</span>
+        <div class="p-group" role="heading" aria-level="3"><span>More builds and experiments</span><small>Full stack, games and Android</small></div>
+        <article class="project reveal" id="proj-smart-crowd-management" data-skills="backend frontend">
+          <span class="num" aria-hidden="true">09</span>
           <div class="p-head">
-            <h3 class="p-name">Lenny Growth Assistant</h3>
-            <p class="tags"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>pgvector</span><span>Ollama</span><span>Anthropic</span><span>Next.js</span></p>
+            <h3 class="p-name">Smart Crowd Management</h3>
+            <p class="tags"><span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span><span>Socket.io</span></p>
           </div>
           <div class="p-body">
-            <p class="p-what">Answers product and growth questions from Lenny's Podcast transcripts, always with sources, and says so plainly when the transcripts don't support an answer.</p>
+            <p class="p-what">Event check-ins by QR code with live crowd counts and overcrowding alerts pushed to organisers in real time.</p>
             <div class="p-actions">
-            <a href="https://github.com/Maggiee18/lenny-growth-assistant" target="_blank" rel="noopener">Code<span class="sr-only">: Lenny Growth Assistant (opens in a new tab)</span></a>
-              <button type="button" class="p-explore" aria-expanded="false" aria-controls="proj-lenny-growth-assistant-more">Explore project</button>
+            <a href="https://github.com/Maggiee18/smart-crowd-management-event-safety-system" target="_blank" rel="noopener">Code<span class="sr-only">: Smart Crowd Management (opens in a new tab)</span></a>
+              <button type="button" class="p-explore" aria-expanded="false" aria-controls="proj-smart-crowd-management-more">Explore project</button>
             </div>
-            <div class="p-more" id="proj-lenny-growth-assistant-more">
+            <div class="p-more" id="proj-smart-crowd-management-more">
               <h4>How I know it works</h4>
-              <p class="p-proof">An evaluation harness caught a search bug that silently returned nothing. I traced it through query plans to an over tuned index, fixed it, and wrote it up.</p>
+              <p class="p-proof">Real time updates over Socket.io rooms, duplicate entry prevention, and email tickets.</p>
             </div>
           </div>
         </article>
         <article class="project reveal" id="proj-gem-cascade" data-skills="algorithms frontend reliability">
-          <span class="num" aria-hidden="true">09</span>
+          <span class="num" aria-hidden="true">10</span>
           <div class="p-head">
             <h3 class="p-name">Gem Cascade</h3>
             <p class="tags"><span>JavaScript</span><span>HTML</span><span>CSS</span></p>
@@ -265,24 +287,6 @@
             <div class="p-more" id="proj-gem-cascade-more">
               <h4>How I know it works</h4>
               <p class="p-proof">Union-find detects L and T shaped matches, breadth first search resolves chained blasts, and a bot simulator tuned each level by win rate.</p>
-            </div>
-          </div>
-        </article>
-        <article class="project reveal" id="proj-smart-crowd-management" data-skills="backend frontend">
-          <span class="num" aria-hidden="true">10</span>
-          <div class="p-head">
-            <h3 class="p-name">Smart Crowd Management</h3>
-            <p class="tags"><span>MongoDB</span><span>Express</span><span>React</span><span>Node.js</span><span>Socket.io</span></p>
-          </div>
-          <div class="p-body">
-            <p class="p-what">Event check-ins by QR code with live crowd counts and overcrowding alerts pushed to organisers in real time.</p>
-            <div class="p-actions">
-            <a href="https://github.com/Maggiee18/smart-crowd-management-event-safety-system" target="_blank" rel="noopener">Code<span class="sr-only">: Smart Crowd Management (opens in a new tab)</span></a>
-              <button type="button" class="p-explore" aria-expanded="false" aria-controls="proj-smart-crowd-management-more">Explore project</button>
-            </div>
-            <div class="p-more" id="proj-smart-crowd-management-more">
-              <h4>How I know it works</h4>
-              <p class="p-proof">Real time updates over Socket.io rooms, duplicate entry prevention, and email tickets.</p>
             </div>
           </div>
         </article>
@@ -375,7 +379,7 @@
         </li>
         <li class="t-item t-next reveal">
           <span class="t-year">2027</span>
-          <div class="t-card"><h3>Graduating, and the next adventure</h3><p>Looking for internships and full time roles where I can build AI that solves real problems.</p></div>
+          <div class="t-card"><h3>Graduating, and the next adventure</h3><p>Looking for internships and full time roles in AI engineering and product development, building AI that solves real problems for real users.</p></div>
         </li>
       </ol>
     </section>
